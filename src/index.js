@@ -66,7 +66,7 @@ export default class MarkdownSiteMapGeneratorPlugin {
                 let all_links = [];
                 let categories = this.getCategories(mds);
                 categories.forEach(cat => {
-                    all_links.push(this.options.host + "/categories/" + cat);
+                    all_links.push(this.options.host + "/categories/" + cat.split(" ").join("%20"));
                 })
                 mds.forEach(md => {
                     let path = md.path.split(".")[0].replace("posts", this.options.route);
