@@ -1,6 +1,6 @@
-# Markdown RSS Generator Plugin
+# Markdown Site Map Generator Plugin
 
-> Generate RSS from markdown
+> Generate Site Map from markdown
 
 ## Installation
 
@@ -15,34 +15,20 @@ npm install markdown-rss-generator-webpack-plugin
 In your Webpack Config file
 
 ```javascript
-const MarkdownRSSGeneratorPlugin = require("markdown-rss-generator-webpack-plugin").default;
+const MarkdownSiteMapGeneratorPlugin = require("markdown-sitemap-generator-webpack-plugin").default;
 
 //define the options
 const option = {
-                title: "Sporule",
-                outputPath: "rss.xml", //rss file output path
-                description: "Sporule is a micro blog site",
-                link: "https://www.sporule.com",
-                language: "en",
-                image: "https://i.imgur.com/vfh3Une.png",
-                favicon: "https://i.imgur.com/vfh3Une.png",
-                copyright: "All rights reserved 2019, Sporule",
-                updated: new Date(), //updated date
-                generator: "Sporule",
-                author: {
-                    name: "Sporule",
-                    email: "example@example.com",
-                    link: "https://www.sporule.com"
-                },
-                route: "/items",
-                //this is the route for the markdown link. If the path of the markdown files are /posts/sporule.md, and the page link for rendered markdown is /items/sporule, then the route is /items
-                useAtom:true //it will return atom xml if it is true, otherwise it will return rss version 2 xml.
+      host: Config.url,
+      links: [], //links that you also want to include in the site map
+      route: "/items",
+      outputPath:"sitemap.txt"
     }
 
 //In the plugin section
 
  plugins: [
-  new MarkdownRSSGeneratorPlugin(option)
+  new MarkdownSiteMapGeneratorPlugin(option)
  ]
 
 ```
